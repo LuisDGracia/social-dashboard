@@ -26,7 +26,7 @@ export const HeaderText = styled.p`
   width: 60%;
   color: ${theme.text};
   margin: 0;
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: bold;
 `;
 
@@ -34,6 +34,7 @@ export const HeaderSubText = styled.p`
   display: inline-block;
   width: 50%;
   color: ${theme.text};
+  font-size: 0.8em;
   opacity: 0.3;
   margin: 0;
 `;
