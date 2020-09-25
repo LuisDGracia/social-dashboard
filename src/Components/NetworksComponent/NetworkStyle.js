@@ -6,51 +6,47 @@ const theme = {
   text: "#fcdab7",
 };
 
-const border = {
-  size: '5px',
-  color: '#f00'
-}
+var border = {
+  size: "6px",
+  facebook: "#3b5998;",
+  twitter: "#1da1f2;",
+  instagram: "#e1306c;",
+  youtube: "#ff0000;",
+};
 
 const borderBefore = keyframes`
   0%{
-    left: calc( ${border.size} * -1 );
-    width: calc( ${border.size} + 50% );
-    height: ${border.size};
+    top: calc( ${border.size} * -1);
+    border-radius: 3px 0px 0px 0px;
   }
-  33{
-    left: calc( ${border.size} * -1 );
+  50%{
+    height: calc( ( ${border.size} * 2 ) + 100%);
     width: ${border.size};
-    height: ${border.size};
-  }
-  66%{
-    top: calc( ${border.size} * -1.01 );
-    left: calc( ${border.size} * -1 );
-    width: ${border.size};
-    height: calc( ${border.size} + 100% );
+    border-radius: 3px 0px 0px 3px;
   }
   100%{
-    top: calc( ${border.size} * -1.01 );
-    left: calc( ${border.size} * -1 );
-    width: calc( ${border.size} + 50% );
-    height: calc( ${border.size} + 100% );
+    bottom: calc( ${border.size} * -1.01 );
+    width: calc(${border.size} + 50%);
+    height: calc( ( ${border.size} * 2 ) + 100% );
+    border-radius: 3px 0px 0px 3px;
   }
 `;
 
-const borderColor = keyframes`
+
+const borderAfter = keyframes`
   0%{
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    border-left-color: transparent;
+    border-radius: 0px 3px 0px 0px;
   }
-  33{
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    border-left-color: transparent;
+  50%{
+    width: ${border.size};
+    height: calc( ( ${border.size} * 2 ) + 100%);
+    border-radius: 0px 3px 3px 0px;
   }
-  66%{
-    border-right-color: ${border.color};
-    border-bottom-color: transparent;
-    border-left-color: ${border.color};
+  100%{
+    bottom: calc( ${border.size} * -1);
+    width: calc(${border.size} + 50%);
+    height: calc( ( ${border.size} * 2 ) + 100% );
+    border-radius: 0px 3px 3px 0px;
   }
 `;
 // ###################
@@ -70,27 +66,82 @@ export const NetWorkContainer = styled.div`
   background-color: ${theme.light};
   border-radius: ${border.size};
   border: ${border.size} solid transparent;
-  border-top: ${border.size} solid #f00;
+  ${(props) => {
+    switch (props.brand) {
+      case "facebook":
+        return `border-top: ${border.size} solid ${border.facebook}`;
 
+      case "twitter":
+        return `border-top: ${border.size} solid ${border.twitter}`;
+
+      case "instagram":
+        return `border-top: ${border.size} solid ${border.instagram}`;
+
+      case "youtube":
+        return `border-top: ${border.size} solid ${border.youtube}`;
+
+      default:
+        return (border.color = "'#fcdab7'");
+    }
+  }}
+
+  
+  
   &:before{
     content: "";
     position: absolute;
-    background: #f00;
     display: inline-block;
     top: calc( ${border.size} * -1.01 );
     left: calc( ${border.size} * -1 );
     width: calc(${border.size} + 50%);
     height: ${border.size};
     border-radius: 10px 0 0;
+    
+    ${(props) => {
+      switch (props.brand) {
+        case "facebook":
+          return `background-color: ${border.facebook}`;
+
+        case "twitter":
+          return `background-color: ${border.twitter}`;
+
+        case "instagram":
+          return `background-color: ${border.instagram}`;
+
+        case "youtube":
+          return `background-color: ${border.youtube}`;
+
+        default:
+          return (border.color = "'#fcdab7'");
+      }
+    }}
   }
 
   &:after{
     content: "";
     display: block;
     position: absolute;
-    top: 0;
-    left: 50%;
-    width: 50%;
+    ${(props) => {
+      switch (props.brand) {
+        case "facebook":
+          return `background-color: ${border.facebook}`;
+
+        case "twitter":
+          return `background-color: ${border.twitter}`;
+
+        case "instagram":
+          return `background-color: ${border.instagram}`;
+
+        case "youtube":
+          return `background-color: ${border.youtube}`;
+
+        default:
+          return (border.color = "'#fcdab7'");
+      }
+    }}
+    top: calc( ${border.size} * -1);
+    right: calc( ${border.size} * -1);
+    width: calc( ${border.size} + 50%);
     height: ${border.size};
     border-radius: 0 10px 0 0;
   }
@@ -99,9 +150,8 @@ export const NetWorkContainer = styled.div`
     animation: ${borderBefore} 1s forwards ease-in-out;
   }
 
-  &:hover{
-    animation: ${borderColor} 1s steps(1) forwards;
-    outline: none;
+  &:hover:after{
+    animation: ${borderAfter} 1s forwards ease-in-out;
   }
 }
 `;
@@ -115,6 +165,7 @@ export const NetWorkUtil = styled.div`
   justify-content: space-around;
   flex-flow: column wrap;
   background-color: #133b5c;
+  border: 5px solid #133b5c;
   z-index: 1;
 `;
 

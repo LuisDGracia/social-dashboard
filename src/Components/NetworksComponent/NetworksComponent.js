@@ -8,10 +8,10 @@ function Networks({ networks }) {
       {networks.map(( network) => {
         const icon = network.name;
         return (
-          <NetWorkContainer key={network.name} brand ={network.name}>
+          <NetWorkContainer key={icon} brand ={icon}>
             <NetWorkUtil>
               <NetworkHeader>
-                <BrandText brand={network.name}>
+                <BrandText brand={icon}>
                   <FontAwesomeIcon icon={["fab", icon]} />
                 </BrandText>
                 <UserNetWork>@{network.user}</UserNetWork>
