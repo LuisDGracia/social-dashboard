@@ -4,8 +4,8 @@ Zuzki
 
 ## Tecnologies
 
--[React] [https://es.reactjs.org]
--[Firebase] [https://firebase.google.com]
+-[React] (https://es.reactjs.org)
+-[Firebase] (https://firebase.google.com)
 
 ## Available Scripts
 
