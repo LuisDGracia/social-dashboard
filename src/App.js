@@ -1,8 +1,8 @@
 import { fab, faFacebook, faTwitter, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import React, { useEffect, useState, Fragment } from 'react';
 import OverView from './Components/OverViewContainer/OverViewContainer';
 import Networks from './Components/NetworksComponent/NetworksComponent';
 import Header from './Components/HeaderComponent/HeaderComponent';
-import React, { useEffect, useState, Fragment } from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { Container } from "./AppStyles";
 import axios from './axios-orders';
@@ -10,9 +10,9 @@ import axios from './axios-orders';
 
 function App() {
 
-  const [networks, setNetworks ] = useState([])
+  const [networks, setNetworks ] = useState([]);
+  
   library.add( fab, faFacebook, faTwitter, faInstagram, faYoutube)
-
   useEffect(() => {
     axios.get("/networks.json").then((response) => {
       setNetworks(response.data);
