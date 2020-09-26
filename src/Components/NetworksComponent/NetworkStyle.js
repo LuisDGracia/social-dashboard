@@ -1,14 +1,8 @@
 import styled, { keyframes } from "styled-components";
 
-const theme = {
-  dark: "#1d2d50",
-  light: "#133b5c",
-  text: "#fcdab7",
-};
-
 var border = {
   size: "6px",
-  facebook: "#3b5998;",
+  facebook: "#1245af;",
   twitter: "#1da1f2;",
   instagram: "#e1306c;",
   youtube: "#ff0000;",
@@ -63,7 +57,10 @@ export const NetWorksContainer = styled.div`
 export const NetWorkContainer = styled.div`
   width: 21%;
   position: relative;
-  background-color: ${theme.light};
+  transition: background-color ${({theme}) => theme.transition} ease-in-out;
+  ${({ theme }) => {
+    return `background-color: ${theme.colors.dark};`;
+  }}
   border-radius: ${border.size};
   border: ${border.size} solid transparent;
   ${(props) => {
@@ -85,8 +82,6 @@ export const NetWorkContainer = styled.div`
     }
   }}
 
-  
-  
   &:before{
     content: "";
     position: absolute;
@@ -164,9 +159,12 @@ export const NetWorkUtil = styled.div`
   position: relative;
   justify-content: space-around;
   flex-flow: column wrap;
-  background-color: #133b5c;
-  border: 5px solid #133b5c;
   z-index: 1;
+  transition: all ${({theme}) => theme.transition} ease-in-out;
+  ${({ theme }) => {
+    return `background-color: ${theme.colors.dark};
+            border: 5px solid ${theme.colors.dark};`;
+  }}
 `;
 
 export const NetworkHeader = styled.div`
@@ -178,29 +176,38 @@ export const NetWorkFollowers = styled.p`
   display: inline-block;
   width: 100%;
   text-align: center;
-  color: ${theme.text};
   margin: 0;
   font-size: 1.5em;
+  transition: color ${({ theme }) => theme.transition} ease-in-out;
+  ${({ theme }) => {
+    return `color: ${theme.colors.text};`;
+  }}
 `;
 
 export const NetWorkText = styled.p`
   width: 100%;
   text-align: center;
   align-self: baseline;
-  color: ${theme.text};
   margin: 0;
   font-size: 1.2em;
   opacity: 0.3;
+  transition: color ${({ theme }) => theme.transition} ease-in-out;
+  ${({ theme }) => {
+    return `color: ${theme.colors.text};`;
+  }}
 `;
 
 export const UserNetWork = styled.p`
   margin: 0;
-  color: ${theme.text};
   align-self: center;
   font-size: 0.7em;
   padding-left: 5px;
   font-size: 1em;
   opacity: 0.8;
+  transition: color ${({ theme }) => theme.transition} ease-in-out;
+  ${({ theme }) => {
+    return `color: ${theme.colors.text};`;
+  }}
 `;
 
 // ###################
@@ -217,7 +224,7 @@ export const BrandText = styled.p`
   ${(props) => {
     switch (props.brand) {
       case "facebook":
-        return "color: #3b5998;";
+        return "color: #1245af;";
 
       case "twitter":
         return "color: #1da1f2;";
