@@ -1,4 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Author
+
+Zuzki
+
+## Tecnologies
+
+-[React] [https://es.reactjs.org]
+-[Firebase] [https://firebase.google.com]
 
 ## Available Scripts
 
