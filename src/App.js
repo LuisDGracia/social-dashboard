@@ -22,9 +22,12 @@ function App() {
   const totalFollowersHandler = () => {
     let followers = 0
 
-    networks.map( network => {
-      return followers += network.followers;
-    })
+    if( networks.length > 0){
+      networks.map( network => {
+        return followers += network.followers;
+      })
+    }
+
     return followers
   }
 
