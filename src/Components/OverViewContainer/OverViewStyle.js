@@ -15,7 +15,7 @@ export const OverviewContainer = styled.div`
 
   @media ${device.laptop} {
     flex-flow: column wrap;
-    height: 35vh;
+    height: 38%;
   }
 `;
 
