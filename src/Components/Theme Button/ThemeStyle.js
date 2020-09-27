@@ -1,11 +1,17 @@
 import styled from 'styled-components'
+import { device } from '../../styles/mediaQueries'
 
 export const Switch = styled.label`
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 24px;
+  height: 24px;
   align-self: end;
+
+  @media${device.tablet} {
+    width: 60px;
+    height: 34px;
+  }
 `;
 
 export const Input = styled.input`
@@ -22,8 +28,14 @@ export const Input = styled.input`
   }
 
   &:checked + .slider:after {
-    transform: translateX(-28px);
     content: "🌞";
+  }
+
+  @media${device.tablet} {
+    &:checked + .slider:after {
+      transform: translateX(-28px);
+      content: "🌞";
+    }
   }
 
   transition: all 1s ease-in-out;
@@ -45,9 +57,16 @@ export const Slider = styled.span`
     content: "🌛";
     height: 24px;
     width: 24px;
-    right: 4px;
-    bottom: 4px;
+    right: -1px;
+    bottom: -2px;
     transition: 0.4s;
     border-radius: 50%;
+  }
+
+  @media${device.tablet} {
+    &:after {
+      right: 4px;
+      bottom: 4px;
+    }
   }
 `;

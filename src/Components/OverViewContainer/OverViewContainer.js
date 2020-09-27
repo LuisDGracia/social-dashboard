@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function OverView({ networks }) {
 
   let text = "Views";
+  let conversion = "0";
 
   const valueHandler = ( brand ) => {
 
@@ -26,12 +27,22 @@ function OverView({ networks }) {
     }
   }
 
+  const handleViews = (views) => {
+    conversion = `${views}`;
+    if (views >= 1000 && views < 1000000) {
+      conversion = `${Math.floor(views / 1000)}K`;
+    } else if (views >= 1000000) {
+      conversion = `${views / 1000000}M`;
+    }
+  };
+
   return (
     <Fragment>
       <H2>Overview - Today</H2>
       <OverviewContainer>
         {networks.map((network) => {
           const icon = network.name;
+          handleViews(network.views);
           valueHandler(icon)
           return (
             <Fragment key={icon + "-overview"}>
@@ -40,8 +51,8 @@ function OverView({ networks }) {
                 <BrandText brand={icon}>
                   <FontAwesomeIcon icon={["fab", icon]} />
                 </BrandText>
-                <OverViewText>{network.views}</OverViewText>
-                <OverViewCaret><FontAwesomeIcon icon={ "caret-up" }/>{(network.views/100)+'%'}</OverViewCaret>
+                <OverViewText>{conversion}</OverViewText>
+                <OverViewCaret><FontAwesomeIcon icon={ "caret-up" }/>{(5000/1000)+'%'}</OverViewCaret>
               </OverviewInfo>
               <OverviewInfo>
                 <OverViewText>Likes</OverViewText>
@@ -49,7 +60,7 @@ function OverView({ networks }) {
                   <FontAwesomeIcon icon={["fab", icon]} />
                 </BrandText>
                 <OverViewText>{network.likes}</OverViewText>
-                <OverViewCaret><FontAwesomeIcon icon={ "caret-up" }/>{(network.likes/100)+'%'}</OverViewCaret>
+                <OverViewCaret><FontAwesomeIcon icon={ "caret-up" }/>{(2000/100)+'%'}</OverViewCaret>
               </OverviewInfo>
             </Fragment>
           );

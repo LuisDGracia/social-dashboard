@@ -1,9 +1,5 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { device } from "../../styles/mediaQueries";
-
-const positive = keyframes`
-  from
-`
 
 // ###################
 //    OVERVIEW STYLES
@@ -41,6 +37,7 @@ export const OverviewInfo = styled.div`
 
   @media ${device.laptop} {
     width: 20%;
+    cursor: default;
   }
 `;
 
@@ -88,7 +85,7 @@ export const BrandText = styled.p`
   ${(props) => {
     switch (props.brand) {
       case "facebook":
-        return "color: #1245af;";
+        return "color: #1b56d1;";
 
       case "twitter":
         return "color: #1da1f2;";

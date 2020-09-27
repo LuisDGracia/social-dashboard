@@ -30,6 +30,10 @@ export const HeaderText = styled.p`
   font-size: 1.5em;
   font-weight: bold;
   transition: color ${({ theme }) => theme.transition} ease-in-out;
+
+  @media${device.laptop} {
+    font-size: 2em;
+  }
 `;
 
 export const HeaderSubText = styled.p`
@@ -42,6 +46,10 @@ export const HeaderSubText = styled.p`
   opacity: 0.5;
   margin: 0;
   transition: color ${({ theme }) => theme.transition} ease-in-out;
+
+  @media${device.laptop} {
+    font-size: 1.5em;
+  }
 `;
 
 export const HeaderInfo = styled.div`

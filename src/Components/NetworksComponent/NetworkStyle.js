@@ -12,18 +12,18 @@ var border = {
 const borderBefore = keyframes`
   0%{
     top: calc( ${border.size} * -1);
-    border-radius: 3px 0px 0px 0px;
+    border-radius: 5px 0px 0px 0px;
   }
   50%{
     height: calc( ( ${border.size} * 2 ) + 100%);
     width: ${border.size};
-    border-radius: 3px 0px 0px 3px;
+    border-radius: 5px 0px 0px 5px;
   }
   100%{
     bottom: calc( ${border.size} * -1.01 );
     width: calc(${border.size} + 50%);
     height: calc( ( ${border.size} * 2 ) + 100% );
-    border-radius: 3px 0px 0px 3px;
+    border-radius: 5px 0px 0px 5px;
   }
 `;
 
@@ -56,6 +56,7 @@ export const NetWorksContainer = styled.div`
   
   @media ${device.laptop} {
     height: 30%;
+    cursor: default;
   }
 `;
 
@@ -155,6 +156,10 @@ export const NetWorkContainer = styled.div`
   @media ${device.laptop} {
     width: 21%;
 
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.secondary};
+    }
+
     &:hover:before {
       animation: ${borderBefore} 1s forwards ease-in-out;
     }
@@ -168,17 +173,21 @@ export const NetWorkContainer = styled.div`
 export const NetWorkUtil = styled.div`
   width: 100%;
   height: 100%;
-  border: solid 5px trasparent;
   display: flex;
   position: relative;
   justify-content: space-around;
   flex-flow: column wrap;
   z-index: 1;
-  transition: all ${({theme}) => theme.transition} ease-in-out;
+  transition: all ${({ theme }) => theme.transition} ease-in-out;
   ${({ theme }) => {
-    return `background-color: ${theme.colors.dark};
-            border: 5px solid ${theme.colors.dark};`;
+    return `background-color: ${theme.colors.dark};`;
   }}
+
+  @media${device.laptop}{
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.secondary};
+    }
+  }
 `;
 
 export const NetworkHeader = styled.div`
@@ -191,7 +200,8 @@ export const NetWorkFollowers = styled.p`
   width: 100%;
   text-align: center;
   margin: 0;
-  font-size: 1.5em;
+  font-size: 2em;
+  font-weight: bold;
   transition: color ${({ theme }) => theme.transition} ease-in-out;
   ${({ theme }) => {
     return `color: ${theme.colors.text};`;
@@ -217,7 +227,7 @@ export const UserNetWork = styled.p`
   font-size: 0.7em;
   padding-left: 5px;
   font-size: 1em;
-  opacity: 0.8;
+  opacity: 0.9;
   transition: color ${({ theme }) => theme.transition} ease-in-out;
   ${({ theme }) => {
     return `color: ${theme.colors.text};`;
@@ -238,7 +248,7 @@ export const BrandText = styled.p`
   ${(props) => {
     switch (props.brand) {
       case "facebook":
-        return "color: #1245af;";
+        return "color: #1b56d1;";
 
       case "twitter":
         return "color: #1da1f2;";
