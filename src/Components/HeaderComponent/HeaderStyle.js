@@ -1,22 +1,28 @@
 import styled from "styled-components";
+import { device } from "../../styles/mediaQueries";
 
 // ###################
 //    HEADER STYLES
 // ###################
 
 export const HeaderContainer = styled.div`
-  width: 76%;
-  height: 13%;
+  width: 80%;
+  height: 20%;
   padding: 10px;
   margin-top: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  @media ${device.laptop} {
+    width: 76%;
+    height: 10%;
+  }
 `;
 
 export const HeaderText = styled.p`
   display: inline-block;
-  width: 60%;
+  width: 100%;
   ${({ theme }) => {
     return `color: ${theme.colors.text};`;
   }}
@@ -28,16 +34,16 @@ export const HeaderText = styled.p`
 
 export const HeaderSubText = styled.p`
   display: inline-block;
-  width: 50%;
+  width: 100%;
   ${({ theme }) => {
     return `color: ${theme.colors.text};`;
   }}
-  font-size: 0.8em;
-  opacity: 0.3;
+  font-size: 1em;
+  opacity: 0.5;
   margin: 0;
   transition: color ${({ theme }) => theme.transition} ease-in-out;
 `;
 
 export const HeaderInfo = styled.div`
-  width: 70%;
+  width: 80%;
 `

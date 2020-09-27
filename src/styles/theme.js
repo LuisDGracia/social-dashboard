@@ -4,7 +4,7 @@ const theme = {
       background: "#ffffff",
       black: "black",
       white: "white",
-      dark: "#8F8B7E",
+      dark: "#d6c89c",
       light: "#e1f4f3",
       secondary: "radial-gradient(green, yellow)",
       text: "#333333",

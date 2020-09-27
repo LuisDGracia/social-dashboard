@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { device } from "../../styles/mediaQueries";
 
 var border = {
   size: "6px",
@@ -49,15 +50,21 @@ const borderAfter = keyframes`
 
 export const NetWorksContainer = styled.div`
   width: 80%;
-  height: 30%;
   display: flex;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  
+  @media ${device.laptop} {
+    height: 30%;
+  }
 `;
 
 export const NetWorkContainer = styled.div`
-  width: 21%;
+  width: 100%;
+  height: 200px;
+  margin-bottom: 30px;
   position: relative;
-  transition: background-color ${({theme}) => theme.transition} ease-in-out;
+  transition: background-color ${({ theme }) => theme.transition} ease-in-out;
   ${({ theme }) => {
     return `background-color: ${theme.colors.dark};`;
   }}
@@ -82,16 +89,16 @@ export const NetWorkContainer = styled.div`
     }
   }}
 
-  &:before{
+  &:before {
     content: "";
     position: absolute;
     display: inline-block;
-    top: calc( ${border.size} * -1.01 );
-    left: calc( ${border.size} * -1 );
+    top: calc(${border.size} * -1.01);
+    left: calc(${border.size} * -1);
     width: calc(${border.size} + 50%);
     height: ${border.size};
     border-radius: 10px 0 0;
-    
+
     ${(props) => {
       switch (props.brand) {
         case "facebook":
@@ -112,7 +119,7 @@ export const NetWorkContainer = styled.div`
     }}
   }
 
-  &:after{
+  &:after {
     content: "";
     display: block;
     position: absolute;
@@ -135,20 +142,27 @@ export const NetWorkContainer = styled.div`
       }
     }}
     top: calc( ${border.size} * -1);
-    right: calc( ${border.size} * -1);
-    width: calc( ${border.size} + 50%);
+    right: calc(${border.size} * -1);
+    width: calc(${border.size} + 50%);
     height: ${border.size};
     border-radius: 0 10px 0 0;
   }
 
-  &:hover:before{
-    animation: ${borderBefore} 1s forwards ease-in-out;
+  @media ${device.tablet} {
+    width: 40%;
   }
 
-  &:hover:after{
-    animation: ${borderAfter} 1s forwards ease-in-out;
+  @media ${device.laptop} {
+    width: 21%;
+
+    &:hover:before {
+      animation: ${borderBefore} 1s forwards ease-in-out;
+    }
+
+    &:hover:after {
+      animation: ${borderAfter} 1s forwards ease-in-out;
+    }
   }
-}
 `;
 
 export const NetWorkUtil = styled.div`

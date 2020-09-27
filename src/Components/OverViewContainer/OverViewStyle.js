@@ -1,4 +1,9 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { device } from "../../styles/mediaQueries";
+
+const positive = keyframes`
+  from
+`
 
 // ###################
 //    OVERVIEW STYLES
@@ -6,16 +11,23 @@ import styled from "styled-components";
 
 export const OverviewContainer = styled.div`
   width: 80%;
-  height: 35%;
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
+
+  @media ${device.laptop} {
+    flex-flow: column wrap;
+    height: 35vh;
+  }
 `;
 
 export const OverviewInfo = styled.div`
-  width: 21%;
-  height: 45%;
+  width: 45%;
+  height: 100px;
+  position: relative;
+  margin-bottom: 15px;
   padding: 7px;
   display: flex;
   flex-wrap: wrap;
@@ -26,6 +38,10 @@ export const OverviewInfo = styled.div`
   ${({ theme }) => {
     return `background-color: ${theme.colors.dark};`;
   }}
+
+  @media ${device.laptop} {
+    width: 20%;
+  }
 `;
 
 export const OverViewText = styled.p`
@@ -40,9 +56,22 @@ export const OverViewText = styled.p`
 `;
 
 export const H2 = styled.h2`
-  margin: 0;
+  margin-bottom: 10px;
   color: ${({ theme }) => theme.colors.text};
   transition: color ${({ theme }) => theme.transition} ease-in-out;
+
+  @media ${device.laptop}{
+    margin: 0;
+  }
+`;
+
+export const OverViewCaret = styled.p`
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  transition: color ${({ theme }) => theme.transition} ease-in-out;
+  color: green;
+  margin: 0;
 `;
 
 // ###################
@@ -51,6 +80,7 @@ export const H2 = styled.h2`
 
 export const BrandText = styled.p`
   display: inline-block;
+  width: 50%;
   text-align: center;
   font-size: 1.35em;
   margin: 0;
