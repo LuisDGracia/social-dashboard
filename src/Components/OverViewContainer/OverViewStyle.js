@@ -6,60 +6,47 @@ import { device } from "../../styles/mediaQueries";
 // ###################
 
 export const OverviewContainer = styled.div`
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
+  width: 100%;
+  grid-column: 1 / -1;
 
+  display: grid;
+  grid-template-columns: 1fr;
+  
   @media ${device.laptop} {
-    flex-flow: column wrap;
-    height: 38%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 15px;
+    grid-column-gap: 40px;
   }
 `;
 
 export const OverviewInfo = styled.div`
-  width: 45%;
   height: 100px;
-  position: relative;
   margin-bottom: 15px;
   padding: 7px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
   border-radius: 10px;
   transition: background-color ${({ theme }) => theme.transition} ease-in-out;
-  ${({ theme }) => {
-    return `background-color: ${theme.colors.dark};`;
-  }}
+  background-color: ${ ({ theme }) => theme.colors.dark};
+  cursor: default;
 
-  @media ${device.laptop} {
-    width: 20%;
-    cursor: default;
-  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
 `;
 
 export const OverViewText = styled.p`
   display: inline-block;
-  width: 50%;
   text-align: center;
   transition: color ${({ theme }) => theme.transition} ease-in-out;
-  ${({ theme }) => {
-    return `color: ${theme.colors.text};`;
-  }}
+  color: ${({ theme }) => theme.colors.text};
   margin: 0;
 `;
 
 export const H2 = styled.h2`
+  grid-column: 1 / -1;
   margin-bottom: 10px;
   color: ${({ theme }) => theme.colors.text};
   transition: color ${({ theme }) => theme.transition} ease-in-out;
-
-  @media ${device.laptop}{
-    margin: 0;
-  }
 `;
 
 export const OverViewCaret = styled.p`

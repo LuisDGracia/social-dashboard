@@ -5,7 +5,7 @@ import Header from './Components/HeaderComponent/HeaderComponent';
 import React, { useEffect, useState, Fragment } from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCaretUp, faHourglassHalf } from '@fortawesome/free-solid-svg-icons'
-import { Container } from "./AppStyles";
+import { Container, BodyCotainer } from "./AppStyles";
 import axios from './axios-orders';
 import Loading from './Components/LoadingComponent/LoadingComponent';
 
@@ -40,8 +40,10 @@ function App() {
       ) : (
         <Container>
           <Header followers={ totalFollowersHandler() } />
-          <Networks networks={ networks }/>
-          <OverView networks={ networks }/>
+          <BodyCotainer>
+            <Networks networks={ networks }/>
+            <OverView networks={ networks }/>
+          </BodyCotainer>
         </Container>
       )}
     </Fragment>

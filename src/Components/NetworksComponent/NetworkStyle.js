@@ -27,7 +27,6 @@ const borderBefore = keyframes`
   }
 `;
 
-
 const borderAfter = keyframes`
   0%{
     border-radius: 0px 3px 0px 0px;
@@ -49,26 +48,27 @@ const borderAfter = keyframes`
 // ###################
 
 export const NetWorksContainer = styled.div`
-  width: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  
+
+  margin-top: 20px;
+  grid-column: 1 / -1;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 40px;
+  cursor: default;
+
   @media ${device.laptop} {
-    height: 30%;
-    cursor: default;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 40px;
   }
 `;
 
 export const NetWorkContainer = styled.div`
   width: 100%;
   height: 200px;
-  margin-bottom: 30px;
   position: relative;
   transition: background-color ${({ theme }) => theme.transition} ease-in-out;
-  ${({ theme }) => {
-    return `background-color: ${theme.colors.dark};`;
-  }}
+  background-color: ${ ({ theme }) => theme.colors.dark};
   border-radius: ${border.size};
   border: ${border.size} solid transparent;
   ${(props) => {
@@ -149,13 +149,7 @@ export const NetWorkContainer = styled.div`
     border-radius: 0 10px 0 0;
   }
 
-  @media ${device.tablet} {
-    width: 40%;
-  }
-
   @media ${device.laptop} {
-    width: 21%;
-
     &:hover {
       background-color: ${({ theme }) => theme.colors.secondary};
     }

@@ -6,26 +6,16 @@ import { device } from "../../styles/mediaQueries";
 // ###################
 
 export const HeaderContainer = styled.div`
-  width: 80%;
+  width: 100%;
   height: 20%;
-  padding: 10px;
-  margin-top: 10px;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-
-  @media ${device.laptop} {
-    width: 76%;
-    height: 10%;
-  }
 `;
 
 export const HeaderText = styled.p`
   display: inline-block;
   width: 100%;
-  ${({ theme }) => {
-    return `color: ${theme.colors.text};`;
-  }}
+  color: ${ ({ theme }) => theme.colors.text};
   margin: 0;
   font-size: 1.5em;
   font-weight: bold;
@@ -36,15 +26,9 @@ export const HeaderText = styled.p`
   }
 `;
 
-export const HeaderSubText = styled.p`
-  display: inline-block;
-  width: 100%;
-  ${({ theme }) => {
-    return `color: ${theme.colors.text};`;
-  }}
-  font-size: 1em;
+export const HeaderSubText = styled(HeaderText)`
+  font-size: 1.5em;
   opacity: 0.5;
-  margin: 0;
   transition: color ${({ theme }) => theme.transition} ease-in-out;
 
   @media${device.laptop} {
